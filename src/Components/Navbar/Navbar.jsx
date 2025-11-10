@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
-  console.log(user);
+
   const navigate = useNavigate();
   const singOut = () => {
     logOut();
@@ -24,9 +24,17 @@ const Navbar = () => {
       <li>
         <Link to={"/findpartners"}>Find Partners</Link>
       </li>
-      <li>
-        <Link to={"/loginorregister"}>Login/Register</Link>
-      </li>
+
+      {user && (
+        <>
+          <li>
+            <Link to={"/create-partner-profile"}>Create Partner Profile</Link>
+          </li>
+          <li>
+            <Link to={"/myconnections"}>My Connections</Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -57,17 +65,21 @@ const Navbar = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">
-          StudyMate <br />
-          <LiaUniversitySolid className="text-5xl" />
-        </a>
+        <div>
+          <Link to={"/"}>
+            <p className="btn btn-ghost text-xl">
+              StudyMate <br />
+              <LiaUniversitySolid className="text-5xl" />
+            </p>
+          </Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
       {/* Right side: profile dropdown when logged in, otherwise login/register buttons */}
       <div className="navbar-end">
-        { loading ? (
+        {loading ? (
           <div className="pr-2">
             <span
               className="loading loading-spinner text-primary"

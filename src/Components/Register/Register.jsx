@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { RegisterUser, gLogin } = useAuth();
@@ -17,7 +18,7 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const repassword = e.target.repassword.value;
-    
+
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (!passwordRegex.test(password)) {
       toast.error(
@@ -52,6 +53,11 @@ const Register = () => {
         navigate("/");
         toast.success(`Registration successful ! `);
         console.log(res);
+        const profile = {
+          displayName: name,
+          photoURL: image,
+        };
+        return updateProfile(res.user, profile);
       })
       .then((data) => {
         console.log(data);
@@ -63,7 +69,7 @@ const Register = () => {
 
         toast.error(`${err?.message}`);
       });
-    console.log(name, image, email, repassword, password);
+    // console.log(name, image, email, repassword, password);
   };
   const passTogle = (e) => {
     setPass(!pass);
