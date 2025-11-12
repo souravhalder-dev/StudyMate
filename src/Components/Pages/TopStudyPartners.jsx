@@ -9,7 +9,7 @@ const TopStudyPartners = () => {
   const navigate = useNavigate();
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(partners);
+ 
   // Fetch top partners by rating
   useEffect(() => {
     setLoading(true);
@@ -23,7 +23,7 @@ const TopStudyPartners = () => {
         }));
         setPartners(cleanData);
         setLoading(false);
-        console.log("Fetched Top Partners:", cleanData);
+        
       })
       .catch((err) => {
         console.error("Error fetching partners:", err);
