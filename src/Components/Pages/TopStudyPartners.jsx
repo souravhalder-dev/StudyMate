@@ -14,7 +14,7 @@ const TopStudyPartners = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://study-mate-server-ebon.vercel.app/user/top-rated")
+      .get("http://localhost:3000/user/top-rated")
       .then((res) => {
         // Ensure rating is always a number
         const cleanData = (res.data || []).map((p) => ({

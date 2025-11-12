@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
       {
         path: "create-partner-profile",
         loader: ({ params }) =>
-          fetch(`https://study-mate-server-ebon.vercel.app/user/${params.id}`),
+          fetch(`http://localhost:3000/user/${params.id}`),
         element: (
           <PrivateRouter>
             <CreatePartner />
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
       {
         path: "partner/:id",
         loader: ({ params }) =>
-          fetch(`https://study-mate-server-ebon.vercel.app/user/${params.id}`),
+          fetch(`http://localhost:3000/user/${params.id}`),
         element: (
           <PrivateRouter>
             <PartnerDetails />

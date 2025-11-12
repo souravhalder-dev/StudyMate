@@ -15,7 +15,7 @@ const Connections = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `https://study-mate-server-ebon.vercel.app/partner-request?userEmail=${user.email}`
+        `http://localhost:3000/partner-request?userEmail=${user.email}`
       );
       setRequests(data);
     } catch (err) {
@@ -35,9 +35,7 @@ const Connections = () => {
       return;
 
     try {
-      await axios.delete(
-        `https://study-mate-server-ebon.vercel.app/partner-request/${id}`
-      );
+      await axios.delete(`http://localhost:3000/partner-request/${id}`);
       toast.success("Deleted successfully!");
       setRequests((prev) => prev.filter((req) => req._id !== id));
     } catch (err) {
@@ -58,7 +56,7 @@ const Connections = () => {
 
     try {
       const { data } = await axios.patch(
-        `https://study-mate-server-ebon.vercel.app/partner-request/${id}`,
+        `http://localhost:3000/partner-request/${id}`,
         {
           partnerName: editingRequest.partnerName,
           partnerSubject: editingRequest.partnerSubject,
