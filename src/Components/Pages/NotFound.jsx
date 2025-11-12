@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const NotFound = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800 flex flex-col items-center justify-center text-center px-4">
-      {/* Floating 404 */}
+      
       <motion.h1
         className="text-[8rem] md:text-[10rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600 drop-shadow-lg"
         initial={{ scale: 0.8, opacity: 0 }}
@@ -15,7 +15,7 @@ const NotFound = () => {
         404
       </motion.h1>
 
-      {/* Message */}
+  
       <motion.p
         className="text-gray-300 text-lg md:text-xl mt-2 mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ const NotFound = () => {
         Oops! The page you’re looking for doesn’t exist or has been moved.
       </motion.p>
 
-      {/* Button */}
+    
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

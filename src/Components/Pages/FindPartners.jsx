@@ -13,7 +13,7 @@ const FindPartners = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   const navigate = useNavigate();
 
-  //  Fetch all partners
+ 
   useEffect(() => {
     setLoading(true);
     axiosSecure
@@ -25,7 +25,7 @@ const FindPartners = () => {
       .catch(() => setLoading(false));
   }, [axiosSecure, setLoading]);
 
-  // Filtered + Sorted Data
+  
   const filteredPartners = partners
     .filter((p) => p.name?.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((a, b) =>
@@ -34,17 +34,17 @@ const FindPartners = () => {
         : b.name.localeCompare(a.name)
     );
 
-  //  Handle Sort Toggle
+  
   const handleSort = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  // View Profile Handler
+
   const handleViewProfile = (id) => {
     navigate(`/partner/${id}`);
   };
 
-  //  Loading State
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-[70vh]">
@@ -56,7 +56,7 @@ const FindPartners = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
       <div className="max-w-6xl mx-auto">
-        {/*  Search & Sort Controls */}
+      
         <div className="flex justify-between items-center mb-8">
           <button
             onClick={handleSort}
@@ -78,7 +78,7 @@ const FindPartners = () => {
           </div>
         </div>
 
-        {/* Partner Cards */}
+       
         {filteredPartners.length === 0 ? (
           <p className="text-center text-gray-500">No partners found.</p>
         ) : (

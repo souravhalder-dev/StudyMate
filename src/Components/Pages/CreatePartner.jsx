@@ -18,13 +18,13 @@ const CreatePartner = () => {
     connections: 0,
   });
 
-  // 🔹 Handle Input Change
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // 🔹 Handle Submit
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user?.email) {
@@ -70,7 +70,7 @@ const CreatePartner = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name */}
+     
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Full Name
@@ -85,7 +85,7 @@ const CreatePartner = () => {
             />
           </div>
 
-          {/* Profile Image */}
+       
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Profile Image URL
@@ -100,7 +100,7 @@ const CreatePartner = () => {
             />
           </div>
 
-          {/* Subject */}
+        
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Subject
@@ -115,7 +115,7 @@ const CreatePartner = () => {
             />
           </div>
 
-          {/* Study Mode */}
+     
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Study Mode
@@ -132,7 +132,6 @@ const CreatePartner = () => {
             </select>
           </div>
 
-          {/* Availability */}
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Availability Time
@@ -147,7 +146,6 @@ const CreatePartner = () => {
             />
           </div>
 
-          {/* Location */}
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Location
@@ -162,7 +160,6 @@ const CreatePartner = () => {
             />
           </div>
 
-          {/* Experience Level */}
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Experience Level
@@ -180,7 +177,6 @@ const CreatePartner = () => {
             </select>
           </div>
 
-          {/* Rating */}
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Rating
@@ -198,7 +194,6 @@ const CreatePartner = () => {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Email 
@@ -211,7 +206,6 @@ const CreatePartner = () => {
             />
           </div>
 
-          {/* Submit */}
           <div className="pt-3 text-center">
             <button
               type="submit"

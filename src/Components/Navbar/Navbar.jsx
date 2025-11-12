@@ -91,7 +91,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
-      {/* Right side: profile dropdown when logged in, otherwise login/register buttons */}
+     
       <div className="navbar-end">
         {loading ? (
           <div className="pr-2">

@@ -8,7 +8,7 @@ import { EffectFade, Autoplay } from "swiper/modules";
 const LoadingPage = () => {
   const [loading, setLoading] = useState(true);
 
-  // Automatically hide loader after few seconds
+  
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 5000);
     return () => clearTimeout(timer);

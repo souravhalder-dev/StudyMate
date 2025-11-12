@@ -9,7 +9,7 @@ const Connections = () => {
   const [loading, setLoading] = useState(true);
   const [editingRequest, setEditingRequest] = useState(null);
 
-  // Fetch all partner requests
+
   const fetchRequests = async () => {
     if (!user?.email) return;
 
@@ -18,7 +18,7 @@ const Connections = () => {
       const { data } = await axios.get(
         `http://localhost:3000/partner-request?userEmail=${user.email}`
       );
-      setRequests(data); // _id already comes as string from server (we fixed backend)
+      setRequests(data); 
     } catch (err) {
       toast.error("Failed to load requests");
       console.error(err);
@@ -31,7 +31,7 @@ const Connections = () => {
     fetchRequests();
   }, [user?.email]);
 
-  // Delete request
+ 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this request?"))
       return;
@@ -45,10 +45,10 @@ const Connections = () => {
     }
   };
 
-  // Open edit modal
+
   const handleEdit = (request) => setEditingRequest(request);
 
-  // UPDATE REQUEST – 100% WORKING VERSION
+
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,19 +68,18 @@ const Connections = () => {
         }
       );
 
-      // Success → Update UI
+    
       setRequests((prev) => prev.map((req) => (req._id === id ? data : req)));
       toast.success("Updated successfully!");
-      setEditingRequest(null); // Close modal
+      setEditingRequest(null); 
     } catch (err) {
       const errorMsg = err.response?.data?.error || "Update failed";
 
-      // Auto fix for deleted/ghost requests
       if (errorMsg.includes("not found") || errorMsg.includes("own it")) {
         toast.success(" Refreshing list...");
         setRequests((prev) => prev.filter((req) => req._id !== id));
         setEditingRequest(null);
-        setTimeout(fetchRequests, 800); // Auto refresh
+        setTimeout(fetchRequests, 800); 
       } else {
         toast.error(errorMsg);
       }
@@ -160,7 +159,7 @@ const Connections = () => {
         </div>
       )}
 
-      {/* Update Modal – Beautiful & Working */}
+
       {editingRequest && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md transform transition-all">
