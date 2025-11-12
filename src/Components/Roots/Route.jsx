@@ -10,33 +10,36 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import PartnerDetails from "../Pages/PartnerDetails";
 import Connections from "../Pages/Connections";
 import NotFound from "../Pages/NotFound";
-import ForgetPassword from "../Pages/ForgetPassword";
+import ForgetPassword from "../Pages/ForgetPassword"; 
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: Layouts,
+    element: <Layouts />, 
     children: [
       {
         index: true,
-        path: "/",
-        Component: Home,
+        element: <Home />,
       },
       {
         path: "register",
-        Component: Register,
+        element: <Register />,
       },
       {
         path: "login",
-        Component: Login,
+        element: <Login />,
+      },
+      {
+        path: "forget-password", 
+        element: <ForgetPassword />,
       },
       {
         path: "findpartners",
-        Component: FindPartners,
+        element: <FindPartners />,
       },
       {
         path: "profile",
-        Component: Profile,
+        element: <Profile />,
       },
       {
         path: "create-partner-profile",
@@ -60,20 +63,11 @@ export const router = createBrowserRouter([
         path: "partner/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/user/${params.id}`),
-        element: (
-          <PrivateRouter>
-            {" "}
-            <PartnerDetails></PartnerDetails>{" "}
-          </PrivateRouter>
-        ),
-      },
-      {
-        path: "forget-password",
-        Component: <ForgetPassword></ForgetPassword>,
+        element: <PartnerDetails />,
       },
       {
         path: "*",
-        Component: NotFound,
+        element: <NotFound />, 
       },
     ],
   },
