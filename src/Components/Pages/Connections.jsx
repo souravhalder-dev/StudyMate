@@ -9,7 +9,6 @@ const Connections = () => {
   const [loading, setLoading] = useState(true);
   const [editingRequest, setEditingRequest] = useState(null);
 
-
   const fetchRequests = async () => {
     if (!user?.email) return;
 
@@ -18,7 +17,7 @@ const Connections = () => {
       const { data } = await axios.get(
         `http://localhost:3000/partner-request?userEmail=${user.email}`
       );
-      setRequests(data); 
+      setRequests(data);
     } catch (err) {
       toast.error("Failed to load requests");
       console.error(err);
@@ -31,7 +30,6 @@ const Connections = () => {
     fetchRequests();
   }, [user?.email]);
 
- 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this request?"))
       return;
@@ -45,9 +43,7 @@ const Connections = () => {
     }
   };
 
-
   const handleEdit = (request) => setEditingRequest(request);
-
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
@@ -68,18 +64,17 @@ const Connections = () => {
         }
       );
 
-    
       setRequests((prev) => prev.map((req) => (req._id === id ? data : req)));
       toast.success("Updated successfully!");
-      setEditingRequest(null); 
+      setEditingRequest(null);
     } catch (err) {
       const errorMsg = err.response?.data?.error || "Update failed";
 
       if (errorMsg.includes("not found") || errorMsg.includes("own it")) {
-        toast.success(" Refreshing list...");
+        toast.success(" Successfully Add Done...");
         setRequests((prev) => prev.filter((req) => req._id !== id));
         setEditingRequest(null);
-        setTimeout(fetchRequests, 800); 
+        setTimeout(fetchRequests, 800);
       } else {
         toast.error(errorMsg);
       }
@@ -124,9 +119,7 @@ const Connections = () => {
                 <tr key={req._id} className="hover:bg-gray-50 transition">
                   <td className="px-6 py-4">
                     <img
-                      src={
-                        req.partnerPhotoURL 
-                      }
+                      src={req.partnerPhotoURL}
                       alt={req.partnerName}
                       className="w-12 h-12 rounded-full object-cover border-2 border-indigo-200"
                     />
@@ -158,7 +151,6 @@ const Connections = () => {
           </table>
         </div>
       )}
-
 
       {editingRequest && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
