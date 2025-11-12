@@ -9,6 +9,7 @@ import CreatePartner from "../Pages/CreatePartner";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import PartnerDetails from "../Pages/PartnerDetails";
 import Connections from "../Pages/Connections";
+import NotFound from "../Pages/NotFound"; 
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:3000/user/${params.id}`),
         element: (
           <PrivateRouter>
-            <CreatePartner></CreatePartner>
+            <CreatePartner />
           </PrivateRouter>
         ),
       },
@@ -50,16 +51,19 @@ export const router = createBrowserRouter([
         path: "myconnections",
         element: (
           <PrivateRouter>
-            <Connections></Connections>
+            <Connections />
           </PrivateRouter>
         ),
       },
-
       {
         path: "partner/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/user/${params.id}`),
         Component: PartnerDetails,
+      },
+      {
+        path: "*", 
+        Component: NotFound,
       },
     ],
   },
