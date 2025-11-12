@@ -9,7 +9,7 @@ import CreatePartner from "../Pages/CreatePartner";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import PartnerDetails from "../Pages/PartnerDetails";
 import Connections from "../Pages/Connections";
-import NotFound from "../Pages/NotFound"; 
+import NotFound from "../Pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -59,10 +59,15 @@ export const router = createBrowserRouter([
         path: "partner/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/user/${params.id}`),
-        Component: PartnerDetails,
+        element: (
+          <PrivateRouter>
+            {" "}
+            <PartnerDetails></PartnerDetails>{" "}
+          </PrivateRouter>
+        ),
       },
       {
-        path: "*", 
+        path: "*",
         Component: NotFound,
       },
     ],
