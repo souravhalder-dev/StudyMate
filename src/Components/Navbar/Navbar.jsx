@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LiaUniversitySolid } from "react-icons/lia";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
@@ -37,6 +37,17 @@ const Navbar = () => {
       )}
     </>
   );
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  // useEffect(() => {
+  //   const html = document.querySelector("html");
+  //   html.setAttribute("data-theme", theme);
+  //   localStorage.setItem("theme", theme);
+  // }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -105,6 +116,14 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
+              <li>
+                <input
+                  onChange={(e) => handleTheme(e.target.checked)}
+                  type="checkbox"
+                  defaultChecked={localStorage.getItem("theme") === "dark"}
+                  className="toggle"
+                />
+              </li>
               <li>
                 <Link to="/profile">Profile</Link>
               </li>
