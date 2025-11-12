@@ -10,6 +10,7 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import PartnerDetails from "../Pages/PartnerDetails";
 import Connections from "../Pages/Connections";
 import NotFound from "../Pages/NotFound";
+import ForgetPassword from "../Pages/ForgetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
             <PartnerDetails></PartnerDetails>{" "}
           </PrivateRouter>
         ),
+      },
+      {
+        path: "forget-password",
+        Component: <ForgetPassword></ForgetPassword>,
       },
       {
         path: "*",
