@@ -34,11 +34,22 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   /* overflow: hidden; */
 }
-
-.navbar .active {
+ /* .active {
   color: crimson;
   font-weight: bold;
   border: 1px solid #CAC8C8FF;
   border-radius: 20px;
   background: rgb(243, 226, 226);
+} */
+
+a.active {
+  color: red;
+}
+
+a.pending {
+  animate: pulse 1s infinite;
+}
+
+a.transitioning {
+  /* css transition is running */
 }

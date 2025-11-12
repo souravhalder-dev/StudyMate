@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { LiaUniversitySolid } from "react-icons/lia";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
-
+import "./Navbar.css";
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
 
@@ -19,19 +19,22 @@ const Navbar = () => {
   const link = (
     <>
       <li>
-        <Link to={"/"}>Home</Link>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <Link to={"/findpartners"}>Find Partners</Link>
+        <NavLink to={"/findpartners"}>Find Partners</NavLink>
       </li>
 
       {user && (
         <>
           <li>
-            <Link to={"/create-partner-profile"}>Create Partner Profile</Link>
+            <NavLink to={"/create-partner-profile"}>
+              Create Partner Profile
+            </NavLink>
           </li>
           <li>
-            <Link to={"/myconnections"}>My Connections</Link>
+            <NavLink to={"/myconnections"}>My Connections</NavLink>
+          
           </li>
         </>
       )}
