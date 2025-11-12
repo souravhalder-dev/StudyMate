@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import useAxiousSecure from "../Hooks/useAxiousSecure";
+
 import { AuthContex } from "../AuthContex/AuthContex";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const TopStudyPartners = () => {
-  const axiosSecure = useAxiousSecure();
   const { user } = useContext(AuthContex);
   const navigate = useNavigate();
   const [partners, setPartners] = useState([]);
@@ -13,8 +13,8 @@ const TopStudyPartners = () => {
   // Fetch top partners by rating
   useEffect(() => {
     setLoading(true);
-    axiosSecure
-      .get("/user/top-rated")
+    axios
+      .get("https://study-mate-server-ebon.vercel.app/user/top-rated")
       .then((res) => {
         // Ensure rating is always a number
         const cleanData = (res.data || []).map((p) => ({
@@ -29,7 +29,7 @@ const TopStudyPartners = () => {
         console.error("Error fetching partners:", err);
         setLoading(false);
       });
-  }, [axiosSecure]);
+  }, [axios]);
 
   // Handle navigation to partner profile
   const handleViewProfile = (partnerId) => {
@@ -45,7 +45,7 @@ const TopStudyPartners = () => {
       {/* Top Study Partners Section */}
       <div className="max-w-6xl mx-auto px-4">
         <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center text-indigo-700">
-           Top Study Partners
+          Top Study Partners
         </h3>
 
         {loading ? (

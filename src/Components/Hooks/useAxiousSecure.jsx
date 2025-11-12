@@ -4,42 +4,48 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://study-mate-server-ebon.vercel.app",
 });
 
 const useAxiousSecure = () => {
-  const { user, singOut } = useAuth();
-  const nevigate = useNavigate();
-  // set token
+  const navigate = useNavigate();
+  const { user, signOutUser } = useAuth();
+
+  // set token in the header for all the api call using axiosSecure hook
+
   useEffect(() => {
-    const requestInterCeptor = instance.interceptors.request.use((config) => {
-    //   const token = user.accessToken;
-    //   if (token) {
-    //     config.headers.authorization = ` Bearer ${user.accessToken} `;
-    //   }
+    //  request interceptor
+
+    const requestInterceptor = instance.interceptors.request.use((config) => {
+      const token = user?.accessToken;
+      if (token) {
+        // config.headers.authorization = `Bearer ${token}`;
+      }
+
       return config;
     });
-    // Add a response interceptor
-    const responseinterCeptor = instance.interceptors.response.use(
-      (res) => {
-        return res;
-      },
-      (err) => {
-        console.log(err);
-        const status = err.status;
+
+    // response interceptor
+
+    instance.interceptors.response.use((res) => {
+      return res;
+    }),
+      (error) => {
+        const status = error.status;
         if (status === 401 || status === 403) {
-          singOut().then(() => {
-            // negitave the login page
-            nevigate("/register");
+          console.log("log out the user for bad request");
+          signOutUser().then(() => {
+            navigate("/register");
           });
         }
-      }
-    );
+      };
     return () => {
-      instance.interceptors.request.eject(requestInterCeptor);
-      instance.interceptors.request.eject(responseinterCeptor);
+      instance.interceptors.request.eject(requestInterceptor);
+      instance.interceptors.response.eject();
     };
-  }, [user, singOut, nevigate]);
+  }, [user, signOutUser, navigate]);
+
   return instance;
 };
+
 export default useAxiousSecure;

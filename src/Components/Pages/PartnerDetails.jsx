@@ -20,9 +20,11 @@ const PartnerDetails = () => {
     if (!partnerId) return;
     setLoading(true);
     axios
-      .get(`http://localhost:3000/user/${partnerId}`)
+      .get(`https://study-mate-server-ebon.vercel.app/user/${partnerId}`)
       .then((res) => setPartner(res.data))
-      .catch((err) => toast.error(`Failed to load partner details ${err.message}`))
+      .catch((err) =>
+        toast.error(`Failed to load partner details ${err.message}`)
+      )
       .finally(() => setLoading(false));
   }, [partnerId]);
 
@@ -36,21 +38,18 @@ const PartnerDetails = () => {
     try {
       setSending(true);
 
-      
       await axiosSecure.patch(`/user/${partnerId}/increase-partner`);
 
-    
       const requestData = {
         partnerId,
         partnerName: partner?.name,
         partnerEmail: partner?.email,
-        partnerPhotoURL:partner?.profileimage,
+        partnerPhotoURL: partner?.profileimage,
         userEmail: user.email,
         timestamp: new Date(),
       };
       await axiosSecure.post("/partner-request", requestData);
 
-     
       setPartner((prev) => ({
         ...prev,
         partnerCount: (prev.partnerCount || 0) + 1,

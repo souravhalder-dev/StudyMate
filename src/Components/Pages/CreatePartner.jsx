@@ -18,12 +18,10 @@ const CreatePartner = () => {
     connections: 0,
   });
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +37,10 @@ const CreatePartner = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:3000/user", newProfile);
+      const res = await axios.post(
+        "https://study-mate-server-ebon.vercel.app/user",
+        newProfile
+      );
       if (res.data.insertedId) {
         toast.success("Profile created successfully!");
         setFormData({
@@ -70,7 +71,6 @@ const CreatePartner = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-     
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Full Name
@@ -85,7 +85,6 @@ const CreatePartner = () => {
             />
           </div>
 
-       
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Profile Image URL
@@ -100,7 +99,6 @@ const CreatePartner = () => {
             />
           </div>
 
-        
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Subject
@@ -115,7 +113,6 @@ const CreatePartner = () => {
             />
           </div>
 
-     
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
               Study Mode
@@ -196,7 +193,7 @@ const CreatePartner = () => {
 
           <div>
             <label className="block font-semibold mb-1 text-gray-700">
-              Email 
+              Email
             </label>
             <input
               type="email"

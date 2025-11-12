@@ -10,12 +10,12 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import PartnerDetails from "../Pages/PartnerDetails";
 import Connections from "../Pages/Connections";
 import NotFound from "../Pages/NotFound";
-import ForgetPassword from "../Pages/ForgetPassword"; 
+import ForgetPassword from "../Pages/ForgetPassword";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layouts />, 
+    element: <Layouts />,
     children: [
       {
         index: true,
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "forget-password", 
+        path: "forget-password",
         element: <ForgetPassword />,
       },
       {
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
       {
         path: "create-partner-profile",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/user/${params.id}`),
+          fetch(`https://study-mate-server-ebon.vercel.app/user/${params.id}`),
         element: (
           <PrivateRouter>
             <CreatePartner />
@@ -62,12 +62,16 @@ export const router = createBrowserRouter([
       {
         path: "partner/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/user/${params.id}`),
-        element: <PartnerDetails />,
+          fetch(`https://study-mate-server-ebon.vercel.app/user/${params.id}`),
+        element: (
+          <PrivateRouter>
+            <PartnerDetails />
+          </PrivateRouter>
+        ),
       },
       {
         path: "*",
-        element: <NotFound />, 
+        element: <NotFound />,
       },
     ],
   },

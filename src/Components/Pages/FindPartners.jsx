@@ -3,17 +3,17 @@ import React, { useEffect, useState } from "react";
 import useAxiousSecure from "../Hooks/useAxiousSecure";
 import { useNavigate } from "react-router-dom";
 import { Search, ArrowUpDown } from "lucide-react";
+import useAuth from "../Hooks/useAuth";
 
 const FindPartners = () => {
   const axiosSecure = useAxiousSecure();
-
+  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [partners, setPartners] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const navigate = useNavigate();
 
- 
   useEffect(() => {
     setLoading(true);
     axiosSecure
@@ -25,7 +25,6 @@ const FindPartners = () => {
       .catch(() => setLoading(false));
   }, [axiosSecure, setLoading]);
 
-  
   const filteredPartners = partners
     .filter((p) => p.name?.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((a, b) =>
@@ -34,16 +33,18 @@ const FindPartners = () => {
         : b.name.localeCompare(a.name)
     );
 
-  
   const handleSort = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-
   const handleViewProfile = (id) => {
-    navigate(`/partner/${id}`);
+    if (!user) {
+      navigate("/login");
+    } else {
+      navigate(`/partner/${id}`);;
+    }
+    
   };
-
 
   if (loading) {
     return (
@@ -56,7 +57,6 @@ const FindPartners = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
       <div className="max-w-6xl mx-auto">
-      
         <div className="flex justify-between items-center mb-8">
           <button
             onClick={handleSort}
@@ -78,7 +78,6 @@ const FindPartners = () => {
           </div>
         </div>
 
-       
         {filteredPartners.length === 0 ? (
           <p className="text-center text-gray-500">No partners found.</p>
         ) : (
