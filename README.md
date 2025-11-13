@@ -1,16 +1,33 @@
-# React + Vite
+# StudyMate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**StudyMate** connects learners across the world — helping you find your ideal study partner, collaborate, and grow faster together.  
 
-Currently, two official plugins are available:
+🌐 **Live Demo:** [https://studymateass.netlify.app/](https://studymateass.netlify.app/)  
+💻 **Server Code:** [https://github.com/souravhalder-dev/StudyMate-Server](https://github.com/souravhalder-dev/StudyMate-Server)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Technologies & Dependencies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project uses modern web technologies to provide a smooth, responsive, and interactive experience:
 
-## Expanding the ESLint configuration
+- **React 19** — Frontend UI library  
+- **Tailwind CSS 4** — Utility-first CSS framework  
+- **Framer Motion** — Smooth animations and transitions  
+- **React Router v7** — Routing and navigation  
+- **Axios** — HTTP client for API requests  
+- **Firebase / Firebase Admin** — Authentication, database, and cloud functions  
+- **Lucide React** — Beautiful SVG icons  
+- **SweetAlert2** — Stylish alerts and modals  
+- **React Hot Toast** — Lightweight toast notifications  
+- **Swiper** — Modern touch slider  
+- **dotenv** — Environment variable management  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Installation & Setup
+
+###  Clone the repository
+```bash
+git clone [https://github.com/your-username/StudyMate.git](https://github.com/souravhalder-dev/StudyMate
+cd StudyMate
