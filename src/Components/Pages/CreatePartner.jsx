@@ -37,7 +37,10 @@ const CreatePartner = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:3000/user", newProfile);
+      const res = await axios.post(
+        "https://study-mate-server-ebon.vercel.app/user",
+        newProfile
+      );
       if (res.data.insertedId) {
         toast.success("Profile created successfully!");
         setFormData({

@@ -20,7 +20,7 @@ const PartnerDetails = () => {
     if (!partnerId) return;
     setLoading(true);
     axios
-      .get(`http://localhost:3000/user/${partnerId}`)
+      .get(`https://study-mate-server-ebon.vercel.app/user/${partnerId}`)
       .then((res) => setPartner(res.data))
       .catch((err) =>
         toast.error(`Failed to load partner details ${err.message}`)

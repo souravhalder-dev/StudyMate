@@ -9,12 +9,12 @@ const TopStudyPartners = () => {
   const navigate = useNavigate();
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
- 
+
   // Fetch top partners by rating
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3000/user/top-rated")
+      .get("https://study-mate-server-ebon.vercel.app/user/top-rated")
       .then((res) => {
         // Ensure rating is always a number
         const cleanData = (res.data || []).map((p) => ({
@@ -23,7 +23,6 @@ const TopStudyPartners = () => {
         }));
         setPartners(cleanData);
         setLoading(false);
-        
       })
       .catch((err) => {
         console.error("Error fetching partners:", err);
