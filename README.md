@@ -2,8 +2,8 @@
 
 **StudyMate** connects learners across the world — helping you find your ideal study partner, collaborate, and grow faster together.  
 
-🌐 **Live Demo:** [https://studymateass.netlify.app/](https://studymateass.netlify.app/)  
-💻 **Server Code:** [https://github.com/souravhalder-dev/StudyMate-Server](https://github.com/souravhalder-dev/StudyMate-Server)
+ **Live Demo:** [https://studymateass.netlify.app/](https://studymateass.netlify.app/)  
+ **Server Code:** [https://github.com/souravhalder-dev/StudyMate-Server](https://github.com/souravhalder-dev/StudyMate-Server)
 
 ---
 
@@ -25,7 +25,7 @@ This project uses modern web technologies to provide a smooth, responsive, and i
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ###  Clone the repository
 ```bash
